@@ -1,0 +1,59 @@
+.header {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    height: 40px;
+    line-height: 40px;
+    background-color: #333333;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+
+.header .header-logo {
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    float: left;
+    margin-left: 30px;
+}
+
+.header .header-menu {
+    float: right;
+    margin-right: 30px;
+}
+
+.header .header-menu a {
+    margin-right: 15px;
+    color: #FFFFFF;
+}
+
+.header .header-menu a:hover {
+    color: #0097e6;
+}
+
+.banner {
+    margin-top: 70px;
+}
+
+html, body {
+	min-height: 850px;
+}
+
+.footer {
+	position: sticky;
+	top: 1000%;
+}
+
+body::-webkit-scrollbar {
+	width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+	background: #f5f5f5;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #708090;
+	border-radius: 20px;
+	border: 3px solid #f5f5f5;
+  }
