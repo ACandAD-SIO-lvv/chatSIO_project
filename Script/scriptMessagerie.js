@@ -28,7 +28,7 @@ $('#envoi').click( function(){
 	})
 })
 
-$('#message').keyup(function(e){ 
+$('#message').keyup(function(e){
 	if ( $('#message').val() != "" ){
 		$('#envoi').removeAttr('disabled');
 		if (e.which == 13) {

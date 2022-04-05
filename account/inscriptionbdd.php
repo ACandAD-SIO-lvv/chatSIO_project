@@ -23,4 +23,3 @@
 		$req2->closeCursor();
         header('Location: /index.php');
     }
-?>

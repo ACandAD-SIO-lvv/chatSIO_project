@@ -1,5 +1,5 @@
 
-$('#changePassword').click(function(){
+$('#changePassword').click(function () {
 	$('#changePassword').addClass("is-loading");
 
 	var oldpass = $('#oldPass').val();
@@ -9,9 +9,9 @@ $('#changePassword').click(function(){
 	$.ajax({
 		url: "/AJAX/changePassword.php",
 		type: 'POST',
-		data: 'oldpass='+ oldpass +'&newpass='+ newpass +'&newpassconfirm='+ newpassconfirm +'&mail='+ $('#mail').text(),
-		success: function(data){
-			if(data == 1){
+		data: 'oldpass=' + oldpass + '&newpass=' + newpass + '&newpassconfirm=' + newpassconfirm + '&mail=' + $('#mail').text(),
+		success: function (data) {
+			if (data == 1) {
 				$('#changePassword').removeClass("is-loading is-link is-danger is-primary");
 				$('#changePassword').addClass("is-primary");
 				$('#oldPass').val('');
@@ -22,7 +22,7 @@ $('#changePassword').click(function(){
 				$('#changePassword').addClass("is-danger");
 			}
 		},
-		error: function(error){
+		error: function (error) {
 			console.log(error);
 			$('#changePassword').removeClass("is-loading is-link is-danger is-primary");
 			$('#changePassword').addClass("is-danger");
