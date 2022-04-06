@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
 	<header class="header">
 		<nav class="navbar">
 			<div class="navbar-start" style="margin-left: 50px">
@@ -28,7 +27,6 @@
 	<div class="title">
 		<h1>Inscription</h1>
 	</div>
-
 	<div class="section" style="margin-left: 50px; margin-right: 50%">
 		<form action="inscriptionbdd.php" method="POST">
 			<div class="field">
@@ -56,7 +54,6 @@
 				</p>
 			</div>
 			<div class="field">
-
 				<div class="columns is-mobile">
 					<div class="column">
 						<div class="control">
@@ -89,11 +86,10 @@
 
 									$req = $bdd->prepare('SELECT id_promo, nom_promo FROM promo ORDER BY nom_promo');
 									$req->execute();
+
 									while ($ligne = $req->fetch()) {
 										$i = 0;
-										echo '<option value="' . $ligne[$i];
-										$i = $i + 1;
-										echo '" selected>' . $ligne[$i] . '</option>';
+										echo '<option value="'. $ligne[$i]; $i = $i + 1 .'" selected>'. $ligne[$i] .'</option>';
 									}
 
 									$req->closeCursor();

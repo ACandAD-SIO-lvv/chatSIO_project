@@ -28,24 +28,14 @@ if ($_SESSION['email'] == null || $_SESSION['statut'] == "Entreprise") {
 
 		$req = $bdd->prepare('SELECT mail, prenom, nom, contenu_message, date_message FROM compte, message, salon WHERE compte.mail = message.id_compte AND message.id_salon = salon.id_salon AND nom_salon = :salon ORDER BY date_message');
 		$req->execute(array('salon' => $_GET['salon']));
+		$i = 0;
 		while ($ligne = $req->fetch()) {
-			$i = 0;
-
-			if ($_SESSION['email'] == $ligne[$i]) {
-				$i = $i + 1;
-				echo '<p style="text-align: right; clear: right">' . $ligne[$i] . ' ';
-				$i = $i + 1;
-				echo $ligne[$i] . '</p><div class="notification is-info" style="width: 60%; float: right"><p style="text-align: right; overflow-wrap: break-word;">';
-				$i = $i + 1;
-				echo $ligne[$i] . '</p></div>';
-			} else {
-				$i = $i + 1;
-				echo '<p style="text-align: left; clear: right">' . $ligne[$i] . ' ';
-				$i = $i + 1;
-				echo $ligne[$i] . '</p><div class="notification is-primary" style="width: 60%; clear : right"><p style="text-align: left; overflow-wrap: break-word">';
-				$i = $i + 1;
-				echo $ligne[$i] . '</p></div>';
-			}
+			$i = $i + 1;
+			echo '<p style="text-align: right; clear: right">' . $ligne[$i] . ' ';
+			$i = $i + 1;
+			echo $ligne[$i] . '</p><div class="notification '. $_SESSION['email'] == $ligne[$i] ? "is-info" : "is-primary" .'" style="width: 60%; float: right"><p style="text-align: right; overflow-wrap: break-word;">';
+			$i = $i + 1;
+			echo $ligne[$i] . '</p></div>';
 		}
 		$req->closeCursor();
 		?>

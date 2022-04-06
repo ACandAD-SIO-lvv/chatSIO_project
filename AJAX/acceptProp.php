@@ -16,5 +16,5 @@ if ($_POST['choix'] == '1') {
 	$req->execute();
 	$req->closeCursor();
 } else {
-	$i = 1 / 0;
+	throw new Error('Erreur : le choix n\'est pas valide');
 }

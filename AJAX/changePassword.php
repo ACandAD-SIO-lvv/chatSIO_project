@@ -1,11 +1,9 @@
 <?php
-/* page ajax pour changer de mort de passe */
-
+// page ajax pour changer de mort de passe
 
 $resultat = 0;
 
-//Requete pour verifier la correspondance de l'ancien mot de passe
-
+// Requete pour verifier la correspondance de l'ancien mot de passe
 try {
 	$bdd = new PDO('mysql:host=localhost;dbname=projetphp;charset=utf8', 'root', '');
 } catch (Exception $e) {
@@ -16,9 +14,9 @@ $req = $bdd->prepare('SELECT mdp FROM compte WHERE mail = "' . $_POST['mail'] . 
 $req->execute();
 $mdp = $req->fetch()[0];
 $req->closeCursor();
-if ($_POST['oldpass'] == $mdp) {
+if ($_POST['oldpass'] === $mdp) {
 	$resultat = 'old';
-	if ($_POST['newpass'] == $_POST['newpassconfirm']) {
+	if ($_POST['newpass'] === $_POST['newpassconfirm']) {
 
 		$req = $bdd->prepare('UPDATE compte SET mdp = "' . $_POST['newpass'] . '" WHERE mail = "' . $_POST['mail'] . '"');
 		$req->execute();

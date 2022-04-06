@@ -1,5 +1,5 @@
 <?php include('header.php');
-if ($_SESSION['statut'] != "Professeur" and $_SESSION['statut'] != "Admin") {
+if ($_SESSION['statut'] !== "Professeur" and $_SESSION['statut'] !== "Admin") {
 	header('Location: /event.php');
 }
 ?>

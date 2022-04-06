@@ -1,5 +1,5 @@
 <?php include('header.php');
-if ($_SESSION['statut'] != "Admin" and $_SESSION['statut'] != "Professeur") {
+if ($_SESSION['statut'] !== "Admin" and $_SESSION['statut'] !== "Professeur") {
 	header('Location: /index.php');
 }
 ?>
@@ -31,22 +31,23 @@ if ($_SESSION['statut'] != "Admin" and $_SESSION['statut'] != "Professeur") {
 				$req = $bdd->prepare('SELECT id_prop, type_prop, titre_prop, contenu_prop, mail_compte FROM proposition WHERE accepter_prop = "F"');
 				$req->execute();
 				while ($ligne = $req->fetch()) {
-					echo 	'<div class="card" id="' . $ligne[0] . '" style="width: 1000px; margin-top: 15px; margin-left: 10%; margin-right: 10%">
-										<header class="card-header">
-											<p class="card-header-title">
-												' . $ligne[1] . ':  ' . $ligne[2] . '
-											</p>
-										</header>
-										<div class="card-content">
-											<div class="content">
-												' . $ligne[3] . ' </br></br></br>Demande depuis l\'adresse  ' . $ligne[4] . '
-											</div>
-										</div>
-										<footer class="card-footer">
-											<a class="card-footer-item accepter">Accepter</a>
-											<a class="card-footer-item decliner">Décliner</a>
-										</footer>
-									</div>';
+					echo
+						'<div class="card" id="' . $ligne[0] . '" style="width: 1000px; margin-top: 15px; margin-left: 10%; margin-right: 10%">
+							<header class="card-header">
+								<p class="card-header-title">
+									' . $ligne[1] . ':  ' . $ligne[2] . '
+								</p>
+							</header>
+							<div class="card-content">
+								<div class="content">
+									' . $ligne[3] . ' </br></br></br>Demande depuis l\'adresse  ' . $ligne[4] . '
+								</div>
+							</div>
+							<footer class="card-footer">
+								<a class="card-footer-item accepter">Accepter</a>
+								<a class="card-footer-item decliner">Décliner</a>
+							</footer>
+						</div>';
 				}
 				$req->closeCursor();
 				?>

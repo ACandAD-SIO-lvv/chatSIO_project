@@ -8,7 +8,8 @@ if ($_SESSION['email'] == null) {
 <body style="height: 900px;">
 	<div class="section" style="margin-left: 15%; margin-right: 15%; margin-top: 1%">
 		<div class="control">
-			<?php if ($_SESSION['statut'] == "Professeur" or $_SESSION['statut'] == "Admin") {
+			<?php
+			if ($_SESSION['statut'] === "Professeur" or $_SESSION['statut'] === "Admin") {
 				echo '<a href="creation_event.php" class="button is-rounded is-info">Créer un événement</a>';
 			}
 			?>

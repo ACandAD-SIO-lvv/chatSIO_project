@@ -16,8 +16,8 @@ if ($_SESSION['email'] == null) {
 			die('Erreur : ' . $e->getMessage());
 		}
 
-		if ($_SESSION['statut'] != "Etudiant") {
-			$req = $bdd->prepare('SELECT prenom, nom, date_naissance, tel FROM compte WHERE mail = "' . $email . '"');
+		if ($_SESSION['statut'] !== "Etudiant") {
+			$req = $bdd->prepare('SELECT prenom, nom, date_naissance, tel FROM compte WHERE mail = "'. $email .'"');
 			$req->execute();
 			$ligne = $req->fetch();
 			$req->closeCursor();
@@ -30,18 +30,18 @@ if ($_SESSION['email'] == null) {
 
 
 		$i = 0;
-		echo '<label class="label">Prenom : ' . $ligne[$i] . '</label>';
-		$i = $i + 1;
-		echo '<label class="label">Nom : ' . $ligne[$i] . '</label>';
-		$i = $i + 1;
-		echo '<label class="label">Date de naissance : ' . $ligne[$i] . '</label>';
-		$i = $i + 1;
-		echo '<label class="label">Telephone : ' . $ligne[$i] . '</label>';
-		echo '<label class="label">Adresse mail : <span id="mail"></span>' . $email . '</span></label>';
-		echo '<label class="label">Statut : ' . $_SESSION['statut'] . '</label>';
-		$i = $i + 1;
-		if ($_SESSION['statut'] == "Etudiant") {
-			echo '<label class="label">Promotion : ' . $ligne[$i] . '</label>';
+		echo '<label class="label">Prenom : '. $ligne[$i] .'</label>';
+		$i++;
+		echo '<label class="label">Nom : '. $ligne[$i] .'</label>';
+		$i++;
+		echo '<label class="label">Date de naissance : '. $ligne[$i] .'</label>';
+		$i++;
+		echo '<label class="label">Telephone : '. $ligne[$i] .'</label>';
+		echo '<label class="label">Adresse mail : <span id="mail"></span>'. $email .'</span></label>';
+		echo '<label class="label">Statut : '. $_SESSION['statut'] .'</label>';
+		$i++;
+		if ($_SESSION['statut'] === "Etudiant") {
+			echo '<label class="label">Promotion : '. $ligne[$i] .'</label>';
 		}
 		?>
 		<br />

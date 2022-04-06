@@ -15,33 +15,36 @@
 	<header class="header">
 		<nav class="navbar">
 			<div class="navbar-start" style="margin-left: 50px">
-
 				<div class="navbar-menu">
-
 					<p class="navbar-item has-text-centered">
 						<a href="/index.php" class="title">Réseau Inter-SIO</a>
 					</p>
-					<?php if (isset($_SESSION['email'])) {
-						if ($_SESSION['statut'] != "Entreprise") {
-							echo '<p class="navbar-item has-text-centered">';
-							echo '<a href="/messagerie.php" class="subtitle">Messagerie</a>';
-							echo '</p>';
+					<?php
+					if (isset($_SESSION['email'])) {
+						if ($_SESSION['statut'] !== "Entreprise") {
+							echo
+								'<p class="navbar-item has-text-centered">
+							 		<a href="/messagerie.php" class="subtitle">Messagerie</a>
+							 	</p>';
 						}
-						echo '<p class="navbar-item has-text-centered">';
-						echo '<a href="/offres.php" class="subtitle">Offre</a>';
-						echo '</p>';
+						echo
+							'<p class="navbar-item has-text-centered">
+								<a href="/offres.php" class="subtitle">Offre</a>
+							</p>';
 
-						echo '<p class="navbar-item has-text-centered">';
-						echo '<a href="/event.php" class="subtitle">Evenement</a>';
-						echo '</p>';
-						if ($_SESSION['statut'] == "Admin" or $_SESSION['statut'] == "Professeur") {
-							echo '<p class="navbar-item has-text-centered">';
-							echo '<a href="/admin.php" class="subtitle">Administration</a>';
-							echo '</p>';
+						echo
+							'<p class="navbar-item has-text-centered">
+								<a href="/event.php" class="subtitle">Evenement</a>
+							</p>';
+						if ($_SESSION['statut'] === "Admin" or $_SESSION['statut'] === "Professeur") {
+							echo
+								'<p class="navbar-item has-text-centered">
+									<a href="/admin.php" class="subtitle">Administration</a>
+								</p>';
 						}
-					} ?>
+					}
+					?>
 				</div>
-
 			</div>
 
 			<div class="navbar-end" style="margin-right: 2%">
@@ -49,45 +52,47 @@
 					<tr>
 						<?php
 						if (isset($_SESSION['email'])) {
-							echo '<div class="field has-addons " style="margin-top: 4%;">
-							<div class="control">
-								<button id="profil" class="button is-rounded is-primary is-small" onclick="window.location = \'/account/profil.php\'">
-									' . $_SESSION['email'] . '
-								</button>
-							</div>
-							<div class="control">
-								<button class="button is-rounded is-primary is-small" onclick="window.location = \'/account/deconnexion.php\'">
-									Déconnexion
-								</button>
-							</div>
-						</div>';
+							echo
+							'<div class="field has-addons " style="margin-top: 4%;">
+								<div class="control">
+									<button id="profil" class="button is-rounded is-primary is-small" onclick="window.location = \'/account/profil.php\'">
+										' . $_SESSION['email'] . '
+									</button>
+								</div>
+								<div class="control">
+									<button class="button is-rounded is-primary is-small" onclick="window.location = \'/account/deconnexion.php\'">
+										Déconnexion
+									</button>
+								</div>
+							</div>';
 						} else {
-							echo '<td>
-                          <form action="/account/connexionbdd.php"  method="POST">
-                            <div class="field has-addons " style="margin-top: 2%">
-                              <div class="control">
-                                <input class="input is-rounded is-small" name="email" type="email" placeholder="Adresse mail">
-                              </div>
+							echo
+							'<td>
+								<form action="/account/connexionbdd.php"  method="POST">
+									<div class="field has-addons " style="margin-top: 2%">
+									<div class="control">
+										<input class="input is-rounded is-small" name="email" type="email" placeholder="Adresse mail">
+									</div>
 
-                              <div class="control">
-                                <input class="input is-small" name="mdp" type="password" placeholder="Mot de passe">
-                              </div>
+									<div class="control">
+										<input class="input is-small" name="mdp" type="password" placeholder="Mot de passe">
+									</div>
 
-                              <div class="control">
-                                <button class="button is-rounded is-primary is-small">
-                                  Connexion
-                                </button>
-                              </div>
-                            </div>
-                          </form>
-                        </td>
-                        <td>
-                          <div class="navbar-menu">
-                            <p class="navbar-item has-text-centered">
-                              <a href="account/inscription.php" class="subtitle">Inscription</a>
-                            </p>
-                          </div>
-                        </td>';
+									<div class="control">
+										<button class="button is-rounded is-primary is-small">
+										Connexion
+										</button>
+									</div>
+									</div>
+								</form>
+							</td>
+							<td>
+								<div class="navbar-menu">
+									<p class="navbar-item has-text-centered">
+									<a href="account/inscription.php" class="subtitle">Inscription</a>
+									</p>
+								</div>
+							</td>';
 						}
 						?>
 					</tr>

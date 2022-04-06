@@ -1,5 +1,5 @@
 <?php
-/* page ajax pour la selection de checkbox sur la page offres */
+// page ajax pour la selection de checkbox sur la page offres
 
 $resultat = array();
 

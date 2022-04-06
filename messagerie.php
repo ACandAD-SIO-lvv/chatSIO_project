@@ -1,5 +1,5 @@
 <?php include('header.php');
-if ($_SESSION['statut'] == "Entreprise" || $_SESSION['email'] == null) {
+if ($_SESSION['statut'] === "Entreprise" || $_SESSION['email'] == null) {
 	header('Location: /index.php');
 }
 ?>
@@ -19,9 +19,9 @@ if ($_SESSION['statut'] == "Entreprise" || $_SESSION['email'] == null) {
 					} catch (Exception $e) {
 						die('Erreur : ' . $e->getMessage());
 					}
-					if ($_SESSION['statut'] == 'Admin') {
+					if ($_SESSION['statut'] === 'Admin') {
 						$req = $bdd->prepare('SELECT nom_salon FROM salon ORDER BY nom_salon');
-					} elseif ($_SESSION['statut'] == 'Etudiant') {
+					} elseif ($_SESSION['statut'] === 'Etudiant') {
 						$sousreq = $bdd->prepare('SELECT nom_promo FROM promo, compte WHERE promo.id_promo = compte.id_promo AND compte.mail = "' . $_SESSION['email'] . '"');
 						$sousreq->execute();
 
@@ -32,33 +32,36 @@ if ($_SESSION['statut'] == "Entreprise" || $_SESSION['email'] == null) {
 					}
 					$req->execute();
 
-					if ($_SESSION['statut'] != 'Admin') {
-						echo '<a class="panel-block" id="general">
-					<span class="panel-icon">
-					<i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-					</span>
-					Salon general
-					</a>';
+					if ($_SESSION['statut'] !== 'Admin') {
+						echo
+							'<a class="panel-block" id="general">
+								<span class="panel-icon">
+								<i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+								</span>
+								Salon general
+							</a>';
 					}
 
-					if ($_SESSION['statut'] == 'Etudiant' and $_SESSION['statut'] != 'Admin') {
-						echo '<a class="panel-block" id="etudiants">
-					<span class="panel-icon">
-					<i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-					</span>
-					Salon étudiants
-					</a>';
+					if ($_SESSION['statut'] === 'Etudiant' and $_SESSION['statut'] !== 'Admin') {
+						echo
+							'<a class="panel-block" id="etudiants">
+								<span class="panel-icon">
+								<i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+								</span>
+								Salon étudiants
+							</a>';
 					}
 
 					$i = 1;
 					while ($ligne = $req->fetch()) {
 
-						echo '<a class="panel-block" id="' . $i . '">
-					<span class="panel-icon">
-					<i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-					</span>
-					' . $ligne[0] . '
-					</a>';
+						echo
+							'<a class="panel-block" id="' . $i . '">
+								<span class="panel-icon">
+								<i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+								</span>
+								'. $ligne[0] .'
+							</a>';
 						$i = $i + 1;
 					}
 

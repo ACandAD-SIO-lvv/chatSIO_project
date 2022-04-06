@@ -1,5 +1,5 @@
 <?php include('header.php');
-if ($_SESSION['statut'] == "Etudiant" || $_SESSION['email'] == null) {
+if ($_SESSION['statut'] === "Etudiant" || $_SESSION['email'] == null) {
 	header('Location: /offres.php');
 }
 ?>

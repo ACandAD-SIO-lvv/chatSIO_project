@@ -9,10 +9,8 @@ if ($_SESSION['email'] == null) {
 	<div class="section" style="margin-left: 15%; margin-right: 15%; margin-top: 1%">
 		<div class="control">
 
-			<?php if ($_SESSION['statut'] != "Etudiant") {
-				echo '<a href="/creation_offre.php" class="button is-rounded is-info">';
-				echo 'Créer une offre';
-				echo '</a>';
+			<?php if ($_SESSION['statut'] !== "Etudiant") {
+				echo '<a href="/creation_offre.php" class="button is-rounded is-info">Créer une offre</a>';
 			}
 			?>
 
@@ -41,15 +39,16 @@ if ($_SESSION['email'] == null) {
 
 			while ($ligne = $req->fetch()) {
 				$i = 0;
-				echo '<article class="message">
-				<div class="message-header">
-				<p>' . $ligne[$i] . ' :</p>
-				</div>';
-				$i = $i + 1;
-				echo '<div class="message-body">
-				<p>' . $ligne[$i] . '</p>
-				</div>
-				</article>';
+				echo
+					'<article class="message">
+						<div class="message-header">
+							<p>'. $ligne[$i] .' :</p>
+						</div>
+						'. $i = $i + 1 .'
+						<div class="message-body">
+							<p>' . $ligne[$i] . '</p>
+						</div>
+					</article>';
 			}
 
 			$req->closeCursor();
